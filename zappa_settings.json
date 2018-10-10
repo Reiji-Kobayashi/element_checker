@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "main.app",
+        "aws_region": "ap-northeast-1",
+        "profile_name": "default",
+        "project_name": "sample",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-096ybn20g"
+    }
+}

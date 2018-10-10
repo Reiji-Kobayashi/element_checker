@@ -1,0 +1,19 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "num",
+            "AttributeType": "S"
+        },
+    ],
+    "TableName": "Elements",
+    "KeySchema": [
+        {
+            "AttributeName": "num",
+            "KeyType": "HASH"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}
