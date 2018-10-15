@@ -12,6 +12,7 @@ with open('elements_list.csv', 'r') as f:
             Item={
                 "num": row[0],
                 "name": row[1],
-                "yomi": row[2]
+                "yomi": row[2],
+                "symbol": row[3]
             }
         )

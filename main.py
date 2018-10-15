@@ -32,7 +32,7 @@ def intent_handler(clova_request):
     res=None
     # Konamonスロットタイプの単語を取得
     number = clova_request.slot_value('num')
-    if(int(number)>=1 and int(number)<=10):
+    if(int(number)>=1 and int(number)<=20):
         res = make_element_info_name_by_num(str(number))
     else:
         res = clova.response(str("現在登録されていません"))
@@ -68,9 +68,10 @@ def make_element_info_name_by_num(num):
             reprompt = '元素番号を教えてください。'
         else:
             # 元素名が見つかった場合
-            message = '元素番号 {} 番の元素名は、{} です。'.format(
+            message = '元素番号 {} 番の元素名は、{}、元素記号は、{} です。'.format(
                 num,
-                element_info['yomi']
+                element_info['yomi'],
+                element_info['symbol']
             )
             end_session = True
         # build response
@@ -88,8 +89,6 @@ def get_element_info_for(num):
     if num is None or '' == num:
         raise ValueError('num is None or empty...')
     try:
-        #endpoint_url = os.getenv('DYNAMODB_ENDPOINT', None)
-        #dynamodb = boto3.resource('dynamodb', endpoint_url=endpoint_url)
         dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('Elements')
         response = table.get_item(
